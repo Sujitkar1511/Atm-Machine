@@ -1,4 +1,3 @@
-
 import java.util.Random;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -12,12 +11,41 @@ class Atmcard
 	private String Birth;
 	private int dateofbirth;
 	public int Repass;
-	protected int Balance=5000;
+	protected int Balance;
 	public int[]randomnumber=new int[4];
 	private int cardnum,passnum,forgate;
 	private long Rmobile;
 	protected String Reset="\u001B[0m";
+	protected int i=0;
 	Scanner in=new Scanner(System.in);
+	public void setbalance()
+	{
+		
+		if(i<3)
+		{
+			System.out.print("\u001B[35m"+"			Enter the opening ammount :");
+			int bal;
+			bal=in.nextInt();
+			if(bal>=500 && bal<=1000 && (bal%100)==0)
+			{
+		
+				//System.out.println("\u001B[34m"+"				Ammount is add");
+				Balance=bal;
+				
+			}
+			else
+			{
+				System.out.println("\u001B[34m"+"				You most add under 500 to 1000 rupees");
+				i++;
+				setbalance();
+			}
+		}
+		else
+		{
+			System.out.println("\u001B[31m"+"			Your permissions eligible attempts are over");
+			System.exit(0);
+		}
+	}
 	public void valid1()
 	{
 		System.out.print("\u001B[35m"+"			Entre the last 4 digit Card Number:");
@@ -151,6 +179,7 @@ class Atmcard
 		{
 			//System.out.println("\n		........Valid Number.....\n");
 			Password();
+			setbalance();
 		}
 		else
 		{
@@ -185,8 +214,8 @@ class Atmcard
 		   {
 			   System.out.println("\u001B[31m"+"\n		.........................................");
 			   System.out.println(" 		  ........Password is Not Match.....");
-			   System.out.println("    		  Plz enter the valid password");
-		       System.out.println("        		    Plz Try Again");
+			   System.out.println("   		 		  Plz enter the valid password");
+		       System.out.println("      		  		    Plz Try Again");
 		       System.out.println("		.........................................\n");
 		       System.exit(1);
 		   }
@@ -261,6 +290,7 @@ class Atmfunction extends Atmcard
 		{
 			f=false;	
 			System.out.println("\u001B[31m"+"					Thank You");
+			System.out.println("\u001B[31m"+"					Use this Atm Machine");
 			System.exit(1);
 		}
 	}
@@ -341,6 +371,7 @@ class Atmfunction extends Atmcard
 				case 4:
 					f=false;
 					System.out.println("\u001B[31m"+"					Thank You");
+					System.out.println("\u001B[31m"+"					Use this Atm Machine");
 					System.exit(1);
 				default :
 					System.out.println("                             Invalid Option");
