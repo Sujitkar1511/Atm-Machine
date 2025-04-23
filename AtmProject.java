@@ -11,7 +11,7 @@ class Atmcard
 	private String Birth;
 	private int dateofbirth;
 	public int Repass;
-	protected int Balance;
+	protected int Balance,t=0;
 	public int[]randomnumber=new int[4];
 	private int cardnum,passnum,forgate;
 	private long Rmobile;
@@ -185,7 +185,17 @@ class Atmcard
 		{
 			System.out.println("\u001B[38;5;208m"+"\n			......Invaild Number......");
 			System.out.println("       			  Plz check the number   ");
-			System.exit(1);
+			t++;
+			if(t<3)
+			{
+				Mobilenumber();			
+			}
+			else
+			{
+				System.out.println("\u001B[31m"+"			Your permissions eligible attempts are over");
+				System.exit(0);
+			}
+			//System.exit(1);
 		}
 	}
 	public void Password()
@@ -233,12 +243,12 @@ class Atmcard
 	{
 		System.out.print("\u001B[38;5;198m"+"			Enter the Card Holder FullName: ");
 		Name=in.nextLine();
-		Mobilenumber();
-		//Password();
-		//Birthdate();
-		System.out.println("	................................................................");
-		Timedelay();
-		PrintCard();
+			Mobilenumber();
+			//Password();
+			//Birthdate();
+			System.out.println("	................................................................");
+			Timedelay();
+			PrintCard();	
 	}
 }
 class Atmfunction extends Atmcard
@@ -300,20 +310,20 @@ class Atmfunction extends Atmcard
 	}
 	public void Withdrow()
 	{
-		System.out.print("\u001B[32m"+"				Enter the Withdrow Balance:");
+		System.out.print("\u001B[32m"+"				Enter the Withdraw Balance:");
 		bal=sc.nextInt();
 		if(Balance>=bal && bal>=100 && (bal%100)==0)
 		{
 			Balance=Balance-bal;
-			System.out.println("\u001B[31m"+"\n			.......Withdrow Suscessful.......");
+			System.out.println("\u001B[31m"+"\n			.......Withdraw Suscessful.......");
 		}
 		else if(bal<=100)
 		{
-			System.out.println("\u001B[31m"+"				  You Not Withdrow Monoy");
+			System.out.println("\u001B[31m"+"				  You Not Withdrow Monay");
 		}
 		else if(bal%100!=0)
 		{
-			System.out.println("\u001B[31m"+"				  You Not Withdrow Monoy");
+			System.out.println("\u001B[31m"+"				  You Not Withdrow Monay");
 		}
 		else
 		{
@@ -332,7 +342,7 @@ class Atmfunction extends Atmcard
 		}
 		else if(dep<=100)
 		{
-			System.out.println("\u001B[31m"+"			      Your Ammount is Low! Not add Manay");
+			System.out.println("\u001B[31m"+"			      Your Ammount is Low! Not add Monay");
 		}
 		else if(dep%100!=0)
 		{
@@ -340,7 +350,7 @@ class Atmfunction extends Atmcard
 		}
 		else
 		{
-			System.out.println("\u001B[31m"+"			     Your ammount is High! Not add Monany");
+			System.out.println("\u001B[31m"+"			     Your ammount is High! Not add Monay");
 		}
 	}
 	public void Allfuction()
@@ -348,7 +358,7 @@ class Atmfunction extends Atmcard
 		while(f)
 		{
 			System.out.println("\u001B[31m"+"\n	................................................................");
-			System.out.println("\u001B[38;5;208m"+" 		 Withdrow(Press1)        Dedosit(Press2)");
+			System.out.println("\u001B[38;5;208m"+" 		 Withdraw(Press1)        Dedosit(Press2)");
 			System.out.println("  		  Balance Check(Press3)   Exit(press4)");
 			 System.out.println("\u001B[31m"+"		...............................................................");
 			 System.out.print("\u001B[34m"+"          → ");
